@@ -8,6 +8,7 @@ Created on Wed Jan 30 09:26:44 2019
 #mnist.test.images.shape：(10000, 784)
 #mnist.validation.images.shape：(5000, 784)
 
+#使用GradientDescentOptimizer 7000 steps 0.926
 #使用AdamOptimizer accuracy 0.931
 BATCH_SIZE = 500
 IMAGE_SIZE = 28
@@ -69,7 +70,7 @@ def main(_):
 #-------------------------------------------------------
     validation_x = np.reshape(mnist.validation.images,(-1,784))
     #global step
-    train_step = tf.train.AdamOptimizer(1e-3).minimize(cross_entropy)
+    train_step = tf.train.AdamOptimizer(1e-3).minimize(cross_entropy_mean)
     with tf.Session() as sess:
         init = tf.global_variables_initializer()
         sess.run(init)
